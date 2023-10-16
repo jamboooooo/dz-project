@@ -1,4 +1,3 @@
-import React from "react";
 import Paper from "../Paper/Paper";
 import { CategoryCardTypes } from "./types";
 import CategoryDescription from "./CategoryDescription";

@@ -1,0 +1,86 @@
+# Определяем имя рабочего процесса - CI Pipeline
+name: CI Pipeline
+
+# Этот рабочий процесс запускается каждый раз, когда кто-либо совершает push в ветку main
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+# Здесь определяется список заданий. Прежде всего, код должен быть собран в рамках этапа "build".
+jobs:
+  ci:
+    # Задания будут выполняться в runtime environment, которое использует последнюю версию Ubuntu
+    runs-on: ubuntu-latest
+
+    steps:
+      # Переключаемся на код последнего коммита
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Устанавливаем необходимую версию Node.js
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      # Устанавливаем зависимости проекта
+      - name: Install dependencies
+        run: npm ci
+
+      # Проверяем форматирование кода
+      - name: Check formatting
+        run: npm run prettier:check
+
+      # # Проверяем код на наличие проблем (lint errors)
+      # - name: Lint
+      #   run: npm run lint
+
+      # # Выполняем тесты
+      - name: Test
+        run: npm run test
+
+      # Собираем проект
+      - name: Build
+        run: npm run build
+    # Этап "deploy". Его задача - развернуть код на сервере.
+  # Этот этап начнется только после успешного выполнения этапа "build".
+  cd:
+    needs: ci
+    runs-on: ubuntu-latest
+
+    steps:
+      # Используется действие для исключения кода из репозитория
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Выполняем SSH команды на сервере
+      - name: Execute SSH commands
+        uses: appleboy/ssh-action@master
+        with:
+          # Секреты, как SERVER_IP, SERVER_USER и SSH_PRIVATE_KEY,
+          # представляют собой зашифрованные переменные окружения, которые вы можете настроить в вашем репозитории.
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          password: ${{ secrets.SERVER_PASSWORD }}
+          # Команды, которые нужно выполнить на сервере. Обычно это клонирование кода, установка зависимостей, сборка проекта и его запуск.
+          script: |
+            # Переходим в директорию проекта на сервере
+            cd /root/dz-project
+            # Получаем последние изменения из репозитория
+            git pull
+            # Принудительно обновляем код проекта до последней версии
+            git reset --hard origin/main
+            # Устанавливаем зависимости
+            export NVM_DIR=~/.nvm
+            source ~/.nvm/nvm.sh
+            npm ci
+            # Собираем проект
+            npm run build
+            cd ../../var/www
+            rm -rf dist
+            cd /root/dz-project
+            mv dist ../../var/www
+            # Перезапускаем сервер приложения с помощью менеджера процессов PM2
+            sudo service nginx restart

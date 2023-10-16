@@ -1,4 +1,3 @@
-import React from "react";
 import { ListItemTypes } from "./types";
 import Button from "../Button/Button";
 
