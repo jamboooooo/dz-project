@@ -73,8 +73,8 @@
   },
   "lint-staged": {
     "src/**/*.{ts,tsx}": [
-      "prettier --write",
-      "prettier --check",
+      "prettier . --write",
+      "prettier . --check",
       "jest --passWithNoTests"
     ]
   }
