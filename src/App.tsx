@@ -1,6 +1,6 @@
+import AvatarList from "./AvatarList";
 import Card from "./common/Card/Card";
 import CategoryCard from "./common/CategoryCard/CategoryCard";
-import ListItem from "./common/ListItem/ListItem";
 import Paper from "./common/Paper/Paper";
 import Photo from "./common/assets/photo.jpg";
 
@@ -16,12 +16,12 @@ const categoryData = {
   pic: Photo,
 };
 
-const itemData = {
-  pic: Photo,
-  fullDesc: "Аватарка Ахьмада, прямой источник, качество 4k",
-  source: "Телеграм",
-  downloadCount: 1,
-};
+// const itemData = {
+//   pic: Photo,
+//   fullDesc: "Аватарка Ахьмада, прямой источник, качество 4k",
+//   source: "Телеграм",
+//   downloadCount: 1,
+// };
 
 const App = () => {
   return (
@@ -40,12 +40,7 @@ const App = () => {
       </div>
       <div className="mt-5">
         <Paper>
-          <ListItem
-            pic={itemData.pic}
-            fullDesc={itemData.fullDesc}
-            source={itemData.source}
-            downloadCount={itemData.downloadCount}
-          />
+          <AvatarList />
         </Paper>
       </div>
     </div>

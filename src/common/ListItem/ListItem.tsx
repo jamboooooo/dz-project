@@ -1,42 +1,31 @@
 import { ListItemTypes } from "./types";
 import Button from "../Button/Button";
+import Table from "../Table/Table";
 
-const ListItem = ({ pic, fullDesc, source, downloadCount }: ListItemTypes) => {
+const ListItem = ({
+  pic,
+  fullDesc,
+  source,
+  downloadCount,
+  onClick,
+}: ListItemTypes) => {
   return (
-    <table className="min-w-full text-center text-sm font-light table-fixed">
-      <thead className="border-b font-medium">
-        <tr>
-          <th scope="col" className="px-6 py-4">
-            Фото
-          </th>
-          <th scope="col" className="px-6 py-4">
-            Описание
-          </th>
-          <th scope="col" className="px-6 py-4">
-            Источник
-          </th>
-          <th scope="col" className="px-6 py-4">
-            Кол-во скачиваний
-          </th>
-          <th scope="col" className="px-6 py-4">
-            Действие
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr className="border-b hover:bg-neutral-100">
-          <td className="whitespace-nowrap px-6 py-4">
-            <img width={50} src={pic} alt="itemPhoto" />
-          </td>
-          <td className="whitespace-nowrap px-6 py-4 ">{fullDesc}</td>
-          <td className="whitespace-nowrap px-6 py-4">{source}</td>
-          <td className="whitespace-nowrap px-6 py-4">{downloadCount}</td>
-          <td className="whitespace-nowrap px-6 py-4">
-            <Button title="СКАЧАТЬ" variant="secondary" />
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <Table>
+      <Table.Head>Фото</Table.Head>
+      <Table.Head>Описание</Table.Head>
+      <Table.Head>Источник</Table.Head>
+      <Table.Head>Кол-во скачиваний</Table.Head>
+      <Table.Head>Действие</Table.Head>
+      <Table.Body>
+        <img width={50} className="object-center" src={pic} alt="itemPhoto" />
+      </Table.Body>
+      <Table.Body>{fullDesc}</Table.Body>
+      <Table.Body>{source}</Table.Body>
+      <Table.Body>{downloadCount}</Table.Body>
+      <Table.Body>
+        <Button onClick={onClick} title="Удалить" variant="secondary" />
+      </Table.Body>
+    </Table>
   );
 };
 

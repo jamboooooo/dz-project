@@ -3,4 +3,5 @@ export interface ListItemTypes {
   fullDesc: string;
   pic: string;
   source: string;
+  onClick: () => void;
 }
