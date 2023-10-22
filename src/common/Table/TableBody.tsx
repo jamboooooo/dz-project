@@ -1,9 +1,17 @@
+import { Children } from "react";
+
 const TableBody = ({
   children,
 }: {
-  children: string | number | JSX.Element;
+  children: string | number | JSX.Element | JSX.Element[];
 }) => {
-  return <td className="px-6 py-4 w-40 break-words">{children}</td>;
+  const arrayChildren = Children.toArray(children);
+  return (
+    <tbody>
+      {arrayChildren}
+      {/* <tr className="border-b hover:bg-neutral-100">{arrayChildren}</tr> */}
+    </tbody>
+  );
 };
 
 export default TableBody;

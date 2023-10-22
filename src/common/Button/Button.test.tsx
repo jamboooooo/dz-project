@@ -4,7 +4,7 @@ import Button from "./Button";
 
 describe("Button tests", () => {
   test("button primary rendered", () => {
-    render(<Button title="Купить" variant="primary" />);
+    render(<Button title="Купить" variant="primary" onClick={() => {}} />);
     const title = screen.getByText(/Купить/);
     expect(title).toBeInTheDocument();
     const btn = screen.getByRole("button");
@@ -12,7 +12,7 @@ describe("Button tests", () => {
   });
 
   test("button secondary rendered", () => {
-    render(<Button title="Скачать" variant="secondary" />);
+    render(<Button title="Скачать" variant="secondary" onClick={() => {}} />);
     const title = screen.getByText(/Скачать/);
     expect(title).toBeInTheDocument();
     const btn = screen.getByRole("button");

@@ -11,19 +11,32 @@ const ListItem = ({
 }: ListItemTypes) => {
   return (
     <Table>
-      <Table.Head>Фото</Table.Head>
-      <Table.Head>Описание</Table.Head>
-      <Table.Head>Источник</Table.Head>
-      <Table.Head>Кол-во скачиваний</Table.Head>
-      <Table.Head>Действие</Table.Head>
+      <Table.Head>
+        <Table.Row type="head">
+          <Table.Cell type="head">Фото</Table.Cell>
+          <Table.Cell type="head">Описание</Table.Cell>
+          <Table.Cell type="head">Источник</Table.Cell>
+          <Table.Cell type="head">Кол-во скачиваний</Table.Cell>
+          <Table.Cell type="head">Действие</Table.Cell>
+        </Table.Row>
+      </Table.Head>
       <Table.Body>
-        <img width={50} className="object-center" src={pic} alt="itemPhoto" />
-      </Table.Body>
-      <Table.Body>{fullDesc}</Table.Body>
-      <Table.Body>{source}</Table.Body>
-      <Table.Body>{downloadCount}</Table.Body>
-      <Table.Body>
-        <Button onClick={onClick} title="Удалить" variant="secondary" />
+        <Table.Row type="body">
+          <Table.Cell type="body">
+            <img
+              width={50}
+              className="object-center"
+              src={pic}
+              alt="itemPhoto"
+            />
+          </Table.Cell>
+          <Table.Cell type="body">{fullDesc}</Table.Cell>
+          <Table.Cell type="body">{source}</Table.Cell>
+          <Table.Cell type="body">{downloadCount}</Table.Cell>
+          <Table.Cell type="body">
+            <Button onClick={onClick} title="Удалить" variant="secondary" />
+          </Table.Cell>
+        </Table.Row>
       </Table.Body>
     </Table>
   );
