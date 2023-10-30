@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
-import Button from "../../../shared/components/Button/Button";
+import Button from "../Button/Button";
 
 const CardButtons = () => {
   return (

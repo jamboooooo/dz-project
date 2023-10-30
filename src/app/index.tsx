@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import AvatarList from "../widgets/components/AvatarList";
-import Card from "../features/components/Card/Card";
+import Card from "../entities/components/Card/Card";
 import CategoryCard from "../features/components/CategoryCard/CategoryCard";
 import Paper from "../shared/components/Paper/Paper";
 import { useAppDispatch } from "../hooks/redux";

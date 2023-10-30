@@ -84,6 +84,7 @@
     "src/**/*.{ts,tsx}": [
       "prettier . --write",
       "prettier . --check",
+      "git add .",
       "jest --passWithNoTests"
     ]
   }

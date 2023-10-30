@@ -1,6 +1,6 @@
 import Paper from "../../../shared/components/Paper/Paper";
 import { CategoryCardTypes } from "../../types/CategoryCardTypes/types";
-import CategoryDescription from "../../../entities/components/CategotyCardDescription/CategoryDescription";
+import CategoryDescription from "../../../shared/components/CategotyCardDescription/CategoryDescription";
 
 const CategoryCard = ({ pic, category, count }: CategoryCardTypes) => {
   return (

@@ -1,4 +1,4 @@
-import { CardDescriptionTypes } from "../../../features/types/CardTypes/types";
+import { CardDescriptionTypes } from "../../types/CardDescriptionTypes/types";
 
 const CardDescription = ({ cost, description }: CardDescriptionTypes) => {
   return (

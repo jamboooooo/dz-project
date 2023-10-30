@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
-import Card from "../../components/Card/Card";
+import Card from "../../../entities/components/Card/Card";
 
 const props = {
   pic: "picture",

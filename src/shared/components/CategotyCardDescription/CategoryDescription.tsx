@@ -1,4 +1,4 @@
-import { CategoryCardDescriptionTypes } from "../../../features/types/CategoryCardTypes/types";
+import { CategoryCardDescriptionTypes } from "../../types/CategotyCardDescriptionTypes/types";
 
 const CategoryDescription = ({
   category,

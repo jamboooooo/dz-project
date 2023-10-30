@@ -1,7 +1,7 @@
 import Paper from "../../../shared/components/Paper/Paper";
-import CardButtons from "../../../entities/components/CardButtons/CardButtons";
+import CardButtons from "../../../shared/components/CardButtons/CardButtons";
 import { CardTypes } from "../../types/CardTypes/types";
-import CardDescription from "../../../entities/components/CardDescription/CardDescription";
+import CardDescription from "../../../shared/components/CardDescription/CardDescription";
 
 const Card = ({ pic, cost, description }: CardTypes) => {
   return (
